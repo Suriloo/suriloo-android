@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Suriloo</string>
+    <string name="main_logo">Main Logo</string>
+    <string name="create_account">Create Account</string>
+    <string name="app_description">Join the world of religious and spritual content\n Aware yourself from social, policital and global affairs.</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="or_continue_with">OR CONTINUE WITH</string>
+    <string name="google">Google</string>
+    <string name="already_then_login">Already have an account? Log In</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
