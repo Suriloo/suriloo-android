@@ -23,7 +23,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/create_account"
+            android:text="@string/login"
             android:textSize="26sp"
             android:textStyle="bold"
             android:textColor="#1A1A1A" />
@@ -40,8 +40,8 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/username"
-            app:startIconDrawable="@android:drawable/ic_menu_edit"
+            android:hint="@string/email"
+            app:startIconDrawable="@android:drawable/ic_dialog_email"
             app:boxCornerRadiusTopStart="12dp"
             app:boxCornerRadiusTopEnd="12dp"
             app:boxCornerRadiusBottomStart="12dp"
@@ -49,10 +49,10 @@
             android:layout_marginBottom="15dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/username"
+                android:id="@+id/login_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName" />
+                android:inputType="textEmailAddress" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -86,10 +86,10 @@
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/btnSignup"
+            android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:text="@string/sign_up"
+            android:text="@string/login"
             android:textAllCaps="false"
             android:textSize="18sp"
             app:cornerRadius="12dp"
@@ -120,12 +120,12 @@
             app:strokeColor="#E0E0E0" />
 
         <TextView
-            android:id="@+id/tvToLogin"
+            android:id="@+id/tv_to_sign_up"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="20dp"
-            android:text="@string/already_then_login"
+            android:text="@string/don_t_have_account_sign_up"
             android:textColor="#4E65FF"
             android:textStyle="bold" />
 

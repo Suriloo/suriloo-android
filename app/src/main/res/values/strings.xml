@@ -12,5 +12,8 @@
     <string name="already_then_login">Already have an account? Log In</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="server_client_id">365326004114-jsj5rv7m0df0tiu1lo8vpd7o53t3u3hk.apps.googleusercontent.com</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="don_t_have_account_sign_up">Don\'t have account? Sign Up</string>
 
 </resources>
