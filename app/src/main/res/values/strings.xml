@@ -10,6 +10,7 @@
     <string name="or_continue_with">OR CONTINUE WITH</string>
     <string name="google">Google</string>
     <string name="already_then_login">Already have an account? Log In</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="server_client_id">365326004114-jsj5rv7m0df0tiu1lo8vpd7o53t3u3hk.apps.googleusercontent.com</string>
+
 </resources>
