@@ -5,6 +5,8 @@ import com.suriloo.android.model.JwtResponse;
 import com.suriloo.android.model.LoginRequest;
 import com.suriloo.android.model.SignUpRequest;
 import com.suriloo.android.model.TokenRequest;
+import com.suriloo.android.model.PopularChoiceResponse;
+
 
 import java.util.List;
 
@@ -26,7 +28,7 @@ public interface ApiService {
     Call<ResponseBody> signup(@Body SignUpRequest signUpRequest);
 
     @GET("/api/home/popular-choice")
-    Call<List<Content>> getPopularContent();
+    Call<List<PopularChoiceResponse>> getPopularContent();
 
     @GET("/api/home/recommended-for-you")
     Call<List<Content>> getRecommendedContent();
