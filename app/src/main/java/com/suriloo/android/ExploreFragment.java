@@ -42,13 +42,13 @@ public class ExploreFragment extends Fragment {
 
     private void fetchExploreData() {
         exploreList = new ArrayList<>();
-        exploreList.add(new Content("Card 1", "https://via.placeholder.com/200x300/FF0000/FFFFFF?text=Card+1"));
-        exploreList.add(new Content("Card 2", "https://via.placeholder.com/200x300/00FF00/FFFFFF?text=Card+2"));
-        exploreList.add(new Content("Card 3", "https://via.placeholder.com/200x300/0000FF/FFFFFF?text=Card+3"));
-        exploreList.add(new Content("Card 4", "https://via.placeholder.com/200x300/FFFF00/000000?text=Card+4"));
-        exploreList.add(new Content("Card 5", "https://via.placeholder.com/200x300/FF00FF/FFFFFF?text=Card+5"));
-        exploreList.add(new Content("Card 6", "https://via.placeholder.com/200x300/00FFFF/000000?text=Card+6"));
-        exploreList.add(new Content("Card 7", "https://via.placeholder.com/200x300/F0F0F0/000000?text=Card+7"));
-        exploreList.add(new Content("Card 8", "https://via.placeholder.com/200x300/0F0F0F/FFFFFF?text=Card+8"));
+        exploreList.add(new Content("Movies", "https://via.placeholder.com/200x300/FF0000/FFFFFF?text=Movies"));
+        exploreList.add(new Content("Series", "https://via.placeholder.com/200x300/00FF00/FFFFFF?text=Series"));
+        exploreList.add(new Content("Documentaries", "https://via.placeholder.com/200x300/0000FF/FFFFFF?text=Documentaries"));
+        exploreList.add(new Content("Anime", "https://via.placeholder.com/200x300/FFFF00/000000?text=Anime"));
+        exploreList.add(new Content("Live TV", "https://via.placeholder.com/200x300/FF00FF/FFFFFF?text=Live+TV"));
+        exploreList.add(new Content("Sports", "https://via.placeholder.com/200x300/00FFFF/000000?text=Sports"));
+        exploreList.add(new Content("Kids", "https://via.placeholder.com/200x300/F0F0F0/000000?text=Kids"));
+        exploreList.add(new Content("Music", "https://via.placeholder.com/200x300/0F0F0F/FFFFFF?text=Music"));
     }
 }
