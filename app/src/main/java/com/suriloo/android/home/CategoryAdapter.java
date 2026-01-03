@@ -1,13 +1,16 @@
 package com.suriloo.android.home;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.chip.Chip;
+import com.suriloo.android.CategoryContentFragment;
 import com.suriloo.android.R;
 
 import java.util.List;
@@ -31,6 +34,14 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
         Category category = categoryList.get(position);
         holder.chip.setText(category.getName());
+        holder.chip.setOnClickListener(v -> {
+            AppCompatActivity activity = (AppCompatActivity) v.getContext();
+            CategoryContentFragment fragment = new CategoryContentFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString("category", category.getName());
+            fragment.setArguments(bundle);
+            activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, fragment).addToBackStack(null).commit();
+        });
     }
 
     @Override
@@ -43,7 +54,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
 
         public CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
-            chip = (Chip) itemView;
+            chip = (Chip) itemView.findViewById(R.id.chip_item);
         }
     }
 }

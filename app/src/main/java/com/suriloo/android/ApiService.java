@@ -37,12 +37,6 @@ public interface ApiService {
     @GET("/api/home/new-arrivals")
     Call<List<Content>> getNewArrivalsContent();
 
-    @GET("/api/home/recommended/{category}")
-    Call<List<Content>> getRecommendationByCategory(@Path("category") String category);
-
-    @GET("/api/home/recently-watched/{category}")
-    Call<List<Content>> getRecentlyWatchedByCategory(@Path("category") String category);
-
-    @GET("/api/home/new-arrivals/{category}")
-    Call<List<Content>> getNewArrivalsByCategory(@Path("category") String category);
+    @GET("/api/explore/{category}")
+    Call<List<Content>> getContentByCategory(@Path("category") String category);
 }
