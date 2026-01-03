@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/black">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="20sp"
+        android:gravity="center_horizontal">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/main_logo"
+                    android:alpha="0.12"
+                    android:scaleType="centerCrop" />
+                <TextView
+                    android:id="@+id/profile_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Albert Einstein"
+                    android:textSize="22sp"
+                    android:textStyle="italic"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="8sp"/>
+                <ImageView
+                    android:id="@+id/profile_alien"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="20sp"
+                    android:src="@drawable/profile_logo" />
+
+
+            </FrameLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+
+
+
+    </LinearLayout>
+
+</ScrollView>
+
+
