@@ -14,6 +14,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.chip.Chip;
+import com.google.android.material.chip.ChipGroup;
 import com.suriloo.android.ApiClient;
 import com.suriloo.android.ApiService;
 import com.suriloo.android.R;
@@ -25,7 +27,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HomeFragment extends Fragment implements CategoryAdapter.OnCategorySelectedListener {
+public class HomeFragment extends Fragment {
 
     private ViewPager2 popularChoice;
     private RecyclerView recommendationCard;
@@ -43,13 +45,15 @@ public class HomeFragment extends Fragment implements CategoryAdapter.OnCategory
     private List<Content> recommendationList;
     private List<Content> recentlyWatchedList;
     private List<Content> newArrivalsList;
-    private List<String> categoryList;
+    private List<Category> categoryList;
 
     private ApiService apiService;
     private Call<List<Content>> popularChoiceCall;
     private Call<List<Content>> recommendationCall;
     private Call<List<Content>> recentlyWatchedCall;
     private Call<List<Content>> newArrivalsCall;
+    private Call<List<Category>> categoryCall;
+
 
     public HomeFragment() {
         // Required empty public constructor
@@ -68,15 +72,16 @@ public class HomeFragment extends Fragment implements CategoryAdapter.OnCategory
         newArrivalsCard = view.findViewById(R.id.newArrivalsCard);
         categoryRecyclerView = view.findViewById(R.id.category_recycler_view);
 
+
         // Initialize ApiService
         apiService = ApiClient.getInstance(getContext()).create(ApiService.class);
 
         // 2. Prepare Data
-        fetchCategories();
         popularChoiceList = new ArrayList<>();
         recommendationList = new ArrayList<>();
         recentlyWatchedList = new ArrayList<>();
         newArrivalsList = new ArrayList<>();
+        categoryList = new ArrayList<>();
 
         // 3. Setup Adapters
         popularChoiceAdapter = new ContentAdapter(popularChoiceList);
@@ -110,7 +115,7 @@ public class HomeFragment extends Fragment implements CategoryAdapter.OnCategory
             Log.e("HomeFragment", "newArrivalsCard RecyclerView not found");
         }
 
-        categoryAdapter = new CategoryAdapter(categoryList, this);
+        categoryAdapter = new CategoryAdapter(categoryList);
         if (categoryRecyclerView != null) {
             categoryRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
             categoryRecyclerView.setAdapter(categoryAdapter);
@@ -124,25 +129,27 @@ public class HomeFragment extends Fragment implements CategoryAdapter.OnCategory
         return view;
     }
 
-    @Override
-    public void onCategorySelected(String category) {
-        // Cancel any previous calls to avoid race conditions
-        if (recommendationCall != null) recommendationCall.cancel();
-        if (recentlyWatchedCall != null) recentlyWatchedCall.cancel();
-        if (newArrivalsCall != null) newArrivalsCall.cancel();
-
-        // Make new API calls
-        updateRecommendation(category);
-        updateRecentlyWatched(category);
-        updateNewArrivals(category);
-    }
-
     private void loadInitialContent() {
         updatePopularChoice();
-        updateRecommendation(null);
-        updateRecentlyWatched(null);
-        updateNewArrivals(null);
+        updateRecommendation();
+        updateRecentlyWatched();
+        updateNewArrivals();
+        updateCategories();
     }
+
+    private void updateCategories() {
+        categoryList.clear();
+        categoryList.add(new Category("1", "Movies"));
+        categoryList.add(new Category("2", "Series"));
+        categoryList.add(new Category("3", "Documentaries"));
+        categoryList.add(new Category("4", "Anime"));
+        categoryList.add(new Category("5", "Live TV"));
+        categoryList.add(new Category("6", "Sports"));
+        categoryList.add(new Category("7", "Kids"));
+        categoryList.add(new Category("8", "Music"));
+        categoryAdapter.notifyDataSetChanged();
+    }
+
 
     private void updatePopularChoice() {
         popularChoiceCall = apiService.getPopularContent();
@@ -177,8 +184,8 @@ public class HomeFragment extends Fragment implements CategoryAdapter.OnCategory
         });
     }
 
-    private void updateRecommendation(String category) {
-        recommendationCall = (category == null) ? apiService.getRecommendedContent() : apiService.getRecommendationByCategory(category);
+    private void updateRecommendation() {
+        recommendationCall = apiService.getRecommendedContent();
         recommendationCall.enqueue(new Callback<List<Content>>() {
             @Override
             public void onResponse(Call<List<Content>> call, Response<List<Content>> response) {
@@ -200,8 +207,8 @@ public class HomeFragment extends Fragment implements CategoryAdapter.OnCategory
         });
     }
 
-    private void updateRecentlyWatched(String category) {
-        recentlyWatchedCall = (category == null) ? apiService.getRecentlyWatchedContent() : apiService.getRecentlyWatchedByCategory(category);
+    private void updateRecentlyWatched() {
+        recentlyWatchedCall = apiService.getRecentlyWatchedContent();
         recentlyWatchedCall.enqueue(new Callback<List<Content>>() {
             @Override
             public void onResponse(Call<List<Content>> call, Response<List<Content>> response) {
@@ -223,8 +230,8 @@ public class HomeFragment extends Fragment implements CategoryAdapter.OnCategory
         });
     }
 
-    private void updateNewArrivals(String category) {
-        newArrivalsCall = (category == null) ? apiService.getNewArrivalsContent() : apiService.getNewArrivalsByCategory(category);
+    private void updateNewArrivals() {
+        newArrivalsCall = apiService.getNewArrivalsContent();
         newArrivalsCall.enqueue(new Callback<List<Content>>() {
             @Override
             public void onResponse(Call<List<Content>> call, Response<List<Content>> response) {
@@ -244,16 +251,6 @@ public class HomeFragment extends Fragment implements CategoryAdapter.OnCategory
                 }
             }
         });
-    }
-
-    private void fetchCategories() {
-        categoryList = new ArrayList<>();
-        categoryList.add("Action");
-        categoryList.add("Comedy");
-        categoryList.add("Drama");
-        categoryList.add("Horror");
-        categoryList.add("Science Fiction");
-        categoryList.add("Fantasy");
     }
 
     private void setupBannerTransformers() {
