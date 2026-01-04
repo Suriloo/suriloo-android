@@ -14,10 +14,18 @@ import java.util.List;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder> {
 
-    private List<Category> categoryList;
+    // 1. Listener Interface
+    public interface OnCategoryClickListener {
+        void onCategoryClick(Content content);
+    }
 
-    public CategoryAdapter(List<Category> categoryList) {
-        this.categoryList = categoryList;
+    private final List<Content> contentList;
+    private final OnCategoryClickListener clickListener;
+
+    // 2. Updated Constructor to accept the listener
+    public CategoryAdapter(List<Content> contentList, OnCategoryClickListener clickListener) {
+        this.contentList = contentList;
+        this.clickListener = clickListener;
     }
 
     @NonNull
@@ -29,21 +37,28 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
 
     @Override
     public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
-        Category category = categoryList.get(position);
-        holder.chip.setText(category.getName());
+        Content contentItem = contentList.get(position);
+        holder.chip.setText(contentItem.getTitle());
+
+        // 3. The adapter now just reports the click, it doesn't navigate
+        holder.chip.setOnClickListener(v -> {
+            if (clickListener != null) {
+                clickListener.onCategoryClick(contentItem);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return categoryList.size();
+        return contentList.size();
     }
 
     public static class CategoryViewHolder extends RecyclerView.ViewHolder {
-        Chip chip;
+        final Chip chip;
 
         public CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
-            chip = (Chip) itemView;
+            chip = itemView.findViewById(R.id.chip_item);
         }
     }
 }

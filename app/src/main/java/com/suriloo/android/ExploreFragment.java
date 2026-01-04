@@ -42,9 +42,9 @@ public class ExploreFragment extends Fragment {
 
     private void fetchExploreData() {
         exploreList = new ArrayList<>();
-        exploreList.add(new Content("Movies", "https://via.placeholder.com/200x300/FF0000/FFFFFF?text=Movies"));
-        exploreList.add(new Content("Series", "https://via.placeholder.com/200x300/00FF00/FFFFFF?text=Series"));
-        exploreList.add(new Content("Documentaries", "https://via.placeholder.com/200x300/0000FF/FFFFFF?text=Documentaries"));
+        exploreList.add(new Content("FM", "https://via.placeholder.com/200x300/FF0000/FFFFFF?text=Movies"));
+        exploreList.add(new Content("Religious", "https://via.placeholder.com/200x300/00FF00/FFFFFF?text=Series"));
+        exploreList.add(new Content("", "https://via.placeholder.com/200x300/0000FF/FFFFFF?text=Documentaries"));
         exploreList.add(new Content("Anime", "https://via.placeholder.com/200x300/FFFF00/000000?text=Anime"));
         exploreList.add(new Content("Live TV", "https://via.placeholder.com/200x300/FF00FF/FFFFFF?text=Live+TV"));
         exploreList.add(new Content("Sports", "https://via.placeholder.com/200x300/00FFFF/000000?text=Sports"));
