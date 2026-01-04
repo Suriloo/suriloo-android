@@ -5,16 +5,16 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 public class Content implements Serializable {
-    @SerializedName("name")
+    @SerializedName(value = "name", alternate = {"title"})
     private String title;
 
-    @SerializedName("cover")
+    @SerializedName(value = "cover", alternate = {"thumbnailsrc"})
     private String imageUrl;
 
     @SerializedName("author")
     private String author;
 
-    @SerializedName("src")
+    @SerializedName(value = "src", alternate = {"contentsrc"})
     private String streamUrl; // The URL of the audio stream
 
     // This constructor is needed for the ExploreFragment's placeholder data

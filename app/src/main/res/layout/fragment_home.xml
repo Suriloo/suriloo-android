@@ -90,6 +90,7 @@
 
 
         <LinearLayout
+            android:id="@+id/recently_watched_title_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -120,6 +121,7 @@
             android:paddingEnd="8dp" />
 
         <LinearLayout
+            android.id="@+id/new_arrivals_title_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"

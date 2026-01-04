@@ -31,12 +31,15 @@ public interface ApiService {
     @GET("/api/home/recommended-for-you")
     Call<List<Content>> getRecommendedContent();
 
-    @GET("/api/home/recently-watched")
-    Call<List<Content>> getRecentlyWatchedContent();
-
     @GET("/api/home/new-arrivals")
     Call<List<Content>> getNewArrivalsContent();
 
     @GET("/api/explore/{category}")
     Call<List<Content>> getContentByCategory(@Path("category") String category);
+
+    @GET("/api/home/recently-watched")
+    Call<List<Content>> getMostRecentlyWatched();
+
+    @POST("/api/home/recently-watched")
+    Call<ResponseBody> markAsWatched(@Body Content content);
 }
